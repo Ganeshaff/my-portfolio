@@ -102,6 +102,43 @@ header p {
 .service i {
   font-size: 2rem;
   margin-bottom: 10px;
+  color: #007BFF; /* Default icon color */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.service:hover i {
+  color: #0056b3; /* Icon color on hover */
+}
+
+/* Courses & Certifications Section */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.course {
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.course:hover {
+  transform: translateY(-10px);
+}
+
+.course i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #007BFF; /* Default icon color */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.course:hover i {
+  color: #0056b3; /* Icon color on hover */
 }
 
 /* Portfolio Section */
