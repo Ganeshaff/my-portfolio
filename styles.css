@@ -208,7 +208,21 @@ header p {
 .project:hover p {
   color: #333; /* Change description color on hover */
 }
+/* Fade-in animation for portfolio section */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+.portfolio-grid {
+  animation: fadeIn 1.5s ease-in-out; /* Apply fade-in animation */
+}
 /* Experience Section */
 .experience-grid {
   max-width: 800px;
