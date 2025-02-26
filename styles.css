@@ -102,12 +102,12 @@ header p {
 .service i {
   font-size: 2rem;
   margin-bottom: 10px;
-  color: #007BFF; /* Default icon color */
+  color: #000; /* Default icon color (black) */
   transition: color 0.3s ease; /* Smooth color transition */
 }
 
 .service:hover i {
-  color: #0056b3; /* Icon color on hover */
+  color: #007BFF; /* Icon color on hover (blue) */
 }
 
 /* Courses & Certifications Section */
