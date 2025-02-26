@@ -6,6 +6,7 @@ body {
   box-sizing: border-box;
   color: #333;
   line-height: 1.6;
+  background: #f9f9f9; /* Light background for the entire page */
 }
 
 h1, h2, h3 {
@@ -18,7 +19,7 @@ a {
   color: inherit;
 }
 
-/* Header Section */
+/* Header Section with Parallax Effect */
 header {
   background: url('images/header-bg.jpg') no-repeat center center/cover;
   height: 100vh;
@@ -27,50 +28,37 @@ header {
   align-items: center;
   text-align: center;
   color: #fff;
-  animation: fadeIn 2s ease-in-out; /* Fade-in animation for the header */
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 2s ease-in-out;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(0, 123, 255, 0.7), rgba(0, 86, 179, 0.7)); /* Gradient overlay */
+  z-index: 1;
+}
+
+header .hero {
+  position: relative;
+  z-index: 2;
 }
 
 header h1 {
   font-size: 4rem;
   font-weight: 600;
-  animation: slideDown 1.5s ease-in-out; /* Slide-down animation for the header text */
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  animation: slideDown 1.5s ease-in-out;
 }
 
 header p {
   font-size: 1.5rem;
   margin: 20px 0;
-  animation: slideUp 1.5s ease-in-out; /* Slide-up animation for the header subtitle */
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  animation: slideUp 1.5s ease-in-out;
 }
 
 .btn {
@@ -83,22 +71,10 @@ header p {
 
 .btn:hover {
   background: #0056b3;
-  transform: scale(1.1); /* Button scale effect on hover */
+  transform: scale(1.1);
 }
 
-/* Sections */
-.section {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  animation: fadeIn 1.5s ease-in-out; /* Fade-in animation for section headings */
-}
-
-/* About Me Section */
+/* About Me Section with Floating Profile Photo */
 .about-content {
   display: flex;
   align-items: center;
@@ -113,14 +89,21 @@ header p {
   border-radius: 50%;
   object-fit: cover;
   margin-right: 30px;
-  transition: transform 0.3s ease; /* Hover effect for profile photo */
+  border: 5px solid transparent;
+  background: linear-gradient(45deg, #007BFF, #0056b3) border-box; /* Gradient border */
+  animation: float 3s ease-in-out infinite; /* Floating animation */
 }
 
-.profile-photo:hover {
-  transform: scale(1.1); /* Enlarge profile photo on hover */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
-/* Services Section */
+/* Services Section with Icon Animations */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -130,117 +113,121 @@ header p {
 }
 
 .service {
-  background: #f4f4f4;
+  background: linear-gradient(45deg, #007BFF, #0056b3); /* Gradient background */
+  color: #fff;
   padding: 20px;
   border-radius: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service:hover {
-  transform: translateY(-10px); /* Lift service card on hover */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .service i {
   font-size: 2rem;
   margin-bottom: 10px;
-  transition: color 0.3s ease; /* Icon color change on hover */
+  animation: bounce 2s infinite; /* Bounce animation for icons */
 }
 
-.service:hover i {
-  color: #007BFF; /* Change icon color on hover */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
-/* Portfolio Section */
+/* Portfolio Section with Masonry Grid */
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-  gap: 20px; /* Space between projects */
-  max-width: 1200px; /* Maximum width of the grid */
-  margin: 0 auto; /* Center the grid */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .project {
-  background: #f4f4f4; /* Background color for each project */
-  padding: 20px; /* Padding inside each project */
-  border-radius: 10px; /* Rounded corners */
-  text-align: center; /* Center-align text */
-  display: flex; /* Use flexbox for even height */
-  flex-direction: column; /* Stack content vertically */
-  justify-content: space-between; /* Space out content evenly */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .project:hover {
-  transform: translateY(-10px); /* Lift project card on hover */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .project img {
-  width: 100%; /* Make image fill the container */
-  height: 200px; /* Fixed height for images */
-  object-fit: cover; /* Ensure images cover the area without stretching */
-  border-radius: 10px; /* Rounded corners for images */
-  margin-bottom: 15px; /* Space below the image */
-  transition: transform 0.3s ease; /* Hover effect for images */
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
 }
 
 .project:hover img {
-  transform: scale(1.05); /* Slightly enlarge image on hover */
+  transform: scale(1.05);
 }
 
 .project h3 {
-  font-size: 1.5rem; /* Title font size */
-  margin-bottom: 10px; /* Space below the title */
-  transition: color 0.3s ease; /* Hover effect for title */
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
 }
 
 .project:hover h3 {
-  color: #007BFF; /* Change title color on hover */
+  color: #007BFF;
 }
 
 .project p {
-  font-size: 1rem; /* Description font size */
-  color: #555; /* Description text color */
-  transition: color 0.3s ease; /* Hover effect for description */
+  font-size: 1rem;
+  color: #555;
+  transition: color 0.3s ease;
 }
 
 .project:hover p {
-  color: #333; /* Change description color on hover */
-}
-/* Fade-in animation for portfolio section */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  color: #333;
 }
 
-.portfolio-grid {
-  animation: fadeIn 1.5s ease-in-out; /* Apply fade-in animation */
-}
-/* Experience Section */
+/* Experience Section with Timeline Design */
 .experience-grid {
   max-width: 800px;
   margin: 0 auto;
   text-align: left;
+  position: relative;
+}
+
+.experience-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: #007BFF;
+  transform: translateX(-50%);
 }
 
 .job {
-  margin-bottom: 30px;
+  background: #fff;
   padding: 20px;
-  background: #f4f4f4;
   border-radius: 10px;
+  margin-bottom: 30px;
+  position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .job:hover {
-  transform: translateY(-5px); /* Lift job card on hover */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .job h3 {
@@ -258,27 +245,49 @@ header p {
   padding-left: 20px;
 }
 
-/* Contact Section */
+/* Contact Section with Floating Animation */
 .contact-content {
   max-width: 800px;
   margin: 0 auto;
   text-align: left;
+  animation: float 3s ease-in-out infinite; /* Floating animation */
 }
 
 .contact-content p {
   margin-bottom: 10px;
-  transition: color 0.3s ease; /* Hover effect for contact info */
+  transition: color 0.3s ease;
 }
 
 .contact-content p:hover {
-  color: #007BFF; /* Change text color on hover */
+  color: #007BFF;
 }
 
-/* Footer */
+/* Footer with Wave Animation */
 footer {
   background: #333;
   color: #fff;
   text-align: center;
   padding: 20px 0;
-  animation: fadeIn 2s ease-in-out; /* Fade-in animation for footer */
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,154.7C384,149,480,107,576,112C672,117,768,171,864,181.3C960,192,1056,160,1152,138.7C1248,117,1344,107,1392,101.3L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>') no-repeat center top;
+  animation: wave 5s linear infinite; /* Wave animation */
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
