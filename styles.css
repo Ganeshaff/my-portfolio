@@ -109,7 +109,6 @@ header p {
 .service:hover i {
   color: #007BFF; /* Icon color on hover (blue) */
 }
-
 /* Courses & Certifications Section */
 .courses-grid {
   display: grid;
