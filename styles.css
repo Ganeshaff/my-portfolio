@@ -113,7 +113,8 @@ header p {
   border-radius: 50%;
   object-fit: cover;
   margin-right: 30px;
-  transition: transform 0.3s ease; /* Hover effect for profile photo */
+  transition: transform 0.3s ease;
+  background: #000; /* Fallback background color */
 }
 
 .profile-photo:hover {
